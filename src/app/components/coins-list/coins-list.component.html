@@ -1,0 +1,32 @@
+<div class="banner">
+    <div class="container">
+        <div class="header">
+            <h2>Crypto Checker</h2>
+            <h6>Check all the crypto currency latest updates</h6>
+        </div>
+        <div class="sub-header">
+            <marquee 
+            behavior="scroll" 
+            onmouseover="stop()" 
+            onmouseout="start()"
+            loop="infinite" 
+            direction="left">
+        <div class="row">
+            <ng-container *ngFor="let currency of currencies">
+                <div class="col-1">
+                    <div class="card">
+                        <img src={{currency.image}} width="100" class="img-fluid" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{currency.symbol | uppercase}}
+                                <span>{{currency.market_cap_change_percentage_24h}} %</span>
+                            </h5>
+                            <p class="card-text">{{currency.current_price | currency: "UAH"}}</p>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        </marquee>
+        </div>
+    </div>
+</div>
