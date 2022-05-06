@@ -37,8 +37,19 @@
 }
 
 .card {
-    background-color: transparent;
+    display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
     color: #fff;
+    padding: 20px;
+    margin: 50px;
+    width: 100px;
+    height: 200px;
+    img {
+        width: 70px;
+    }
+    .card-body {
+        font-size: 12px;
+    }
 }
