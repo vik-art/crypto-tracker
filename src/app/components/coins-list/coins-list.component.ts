@@ -8,20 +8,20 @@ import { CurrencyService } from 'src/app/services/currency.service';
 })
 export class CoinsListComponent implements OnInit {
   currencies!: any;
+  currentValue!: string;
 
   constructor(
     private currencyService: CurrencyService
   ) { }
 
   ngOnInit(): void {
-    this.initTrendingCurrency()
-  }
+  }  
 
-  initTrendingCurrency() {
-    this.currencyService.getTrendingCurrency("UAH")
+  initTrendingCurrency(event: string) {
+    this.currentValue = event;
+    this.currencyService.getTrendingCurrency(event)
     .subscribe(res => {
       this.currencies = res;
-      console.log(res)
     })
   }
 }

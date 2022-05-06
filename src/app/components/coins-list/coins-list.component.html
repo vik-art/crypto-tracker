@@ -1,3 +1,4 @@
+<app-toolbar (onChooseCurrency)="initTrendingCurrency($event)"></app-toolbar>
 <div class="banner">
     <div class="container">
         <div class="header">
@@ -15,12 +16,12 @@
             <ng-container *ngFor="let currency of currencies">
                 <div class="col-1">
                     <div class="card">
-                        <img src={{currency.image}} width="100" class="img-fluid" alt="">
+                        <img src={{currency.image}} class="img-fluid" alt="">
                         <div class="card-body">
                             <h5 class="card-title">{{currency.symbol | uppercase}}
                                 <span>{{currency.market_cap_change_percentage_24h}} %</span>
                             </h5>
-                            <p class="card-text">{{currency.current_price | currency: "UAH"}}</p>
+                            <p class="card-text">{{currency.current_price | currency: currentValue}}</p>
                         </div>
                     </div>
                 </div>
