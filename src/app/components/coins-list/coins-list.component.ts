@@ -29,7 +29,7 @@ export class CoinsListComponent implements OnInit {
     .subscribe(res => {
       this.currencies = res;
     })
-    this.currencyService.getTrendingCurrency("UAH", 100)
+    this.currencyService.getTrendingCurrency(this.currentValue, 100)
     .subscribe(res => {
       this.currenciesInTable = res;
       this.dataSource = new MatTableDataSource(this.currenciesInTable);
@@ -43,7 +43,14 @@ export class CoinsListComponent implements OnInit {
     this.currencyService.getTrendingCurrency(event, 10)
     .subscribe(res => {
       this.currencies = res;
-    })
+    });
+    this.currencyService.getTrendingCurrency(event, 100)
+    .subscribe(res => {
+      this.currenciesInTable = res;
+      this.dataSource = new MatTableDataSource(this.currenciesInTable);
+      this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(event: Event) {
