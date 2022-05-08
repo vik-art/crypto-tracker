@@ -11,10 +11,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { CoinsListComponent } from './components/coins-list/coins-list.component';
 import { CoinDetailsComponent } from './components/coin-details/coin-details.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { CoinDetailsComponent } from './components/coin-details/coin-details.com
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

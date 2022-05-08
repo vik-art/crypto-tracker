@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
@@ -8,20 +11,47 @@ import { CurrencyService } from 'src/app/services/currency.service';
 })
 export class CoinsListComponent implements OnInit {
   currencies!: any;
+  currenciesInTable!: Array<any>;
   currentValue!: string;
+  displayedColumns: string[] = ['id', 'name', 'progress', 'price'];
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private currencyService: CurrencyService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.currentValue = "UAH";
+    this.currencyService.getTrendingCurrency("UAH", 10)
+    .subscribe(res => {
+      this.currencies = res;
+    })
+    this.currencyService.getTrendingCurrency("UAH", 100)
+    .subscribe(res => {
+      this.currenciesInTable = res;
+      this.dataSource = new MatTableDataSource(this.currenciesInTable);
+      this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    });
   }  
 
   initTrendingCurrency(event: string) {
     this.currentValue = event;
-    this.currencyService.getTrendingCurrency(event)
+    this.currencyService.getTrendingCurrency(event, 10)
     .subscribe(res => {
       this.currencies = res;
     })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

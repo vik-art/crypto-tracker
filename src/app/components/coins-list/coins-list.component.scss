@@ -29,6 +29,9 @@
         rgba(0, 0, 0, 0.8)
       ), url(../../../assets/cryptocurrency-bg.jpg);
       height: 400px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
 }
 .sub-header {
     height: 50%;
@@ -52,4 +55,7 @@
     .card-body {
         font-size: 12px;
     }
+}
+table {
+    width: 100%;
 }
