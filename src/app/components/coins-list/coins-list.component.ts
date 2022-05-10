@@ -13,7 +13,7 @@ export class CoinsListComponent implements OnInit {
   currencies!: any;
   currenciesInTable!: Array<any>;
   currentValue!: string;
-  displayedColumns: string[] = ['id', 'name', 'progress', 'price'];
+  displayedColumns: string[] = ['id', 'name', 'progress', 'price', 'updated'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,6 +43,7 @@ export class CoinsListComponent implements OnInit {
     this.currencyService.getTrendingCurrency(event, 10)
     .subscribe(res => {
       this.currencies = res;
+      console.log(res);
     });
     this.currencyService.getTrendingCurrency(event, 100)
     .subscribe(res => {
