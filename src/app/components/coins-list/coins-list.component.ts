@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Coins } from 'src/app/common/interfaces/coins.interface';
 import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { CurrencyService } from 'src/app/services/currency.service';
   styleUrls: ['./coins-list.component.scss']
 })
 export class CoinsListComponent implements OnInit {
-  currencies!: any;
+  currencies!: Array<Coins>;
   currentValue!: string;
 
   constructor(
