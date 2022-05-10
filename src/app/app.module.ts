@@ -17,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { CoinsListComponent } from './components/coins-list/coins-list.component';
 import { CoinDetailsComponent } from './components/coin-details/coin-details.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CoinsTableComponent } from './components/coins-table/coins-table.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { CoinDetailsComponent } from './components/coin-details/coin-details.com
     AppComponent,
     ToolbarComponent,
     CoinsListComponent,
-    CoinDetailsComponent
+    CoinDetailsComponent,
+    FooterComponent,
+    CoinsTableComponent
   ],
   imports: [
     BrowserModule,
