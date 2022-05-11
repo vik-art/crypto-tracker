@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { mergeMap, pipe, switchMap } from 'rxjs';
 import { Coins } from 'src/app/common/interfaces/coins.interface';
 import { CurrencyService } from 'src/app/services/currency.service';
 

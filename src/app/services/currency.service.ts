@@ -25,5 +25,7 @@ export class CurrencyService {
     return this.http.get<Coins[]>(`${environment.currencyUrl}/markets`, {params: params})
   }
 
-  getCurrency() {}
+  getCurrencyById(id: string): Observable<any> {
+    return this.http.get(`${environment.currencyUrl}/${id}`)
+  }
 }
