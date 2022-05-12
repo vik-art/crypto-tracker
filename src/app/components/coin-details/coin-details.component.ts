@@ -34,7 +34,6 @@ export class CoinDetailsComponent implements OnInit {
         radius: 1,
       }
     },
-    scales: {},
     plugins: {
       legend: {display: true}
     }
@@ -56,6 +55,13 @@ export class CoinDetailsComponent implements OnInit {
     .subscribe(res => {
       console.log(res);
       this.coinData = res;
+    })
+  }
+
+  getGraphicalChart() {
+    this.currencyService.getGraphicalCurrency(this.coinId,"USD", "1")
+    .subscribe(res => {
+      console.log(res)
     })
   }
 
