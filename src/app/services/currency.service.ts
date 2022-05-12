@@ -28,4 +28,11 @@ export class CurrencyService {
   getCurrencyById(id: string): Observable<any> {
     return this.http.get(`${environment.currencyUrl}/${id}`)
   }
+
+  getGraphicalCurrency(id: string, currency: string, days: string) {
+    const params = new HttpParams()
+    .set("vs_currency", currency)
+    .set("days", days)
+    return this.http.get(`${environment.currencyUrl}/${id}/market_chart`, {params: params})
+  }
 }
