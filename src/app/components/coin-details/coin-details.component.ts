@@ -13,6 +13,7 @@ export class CoinDetailsComponent implements OnInit {
   coinId!: string;
   coinData!: any;
   days: number = 30;
+  currency!: string;
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
@@ -21,9 +22,9 @@ export class CoinDetailsComponent implements OnInit {
         label: "Price Trends",
         backgroundColor: 'rgba(148, 159, 377, 0.2)',
         borderColor: '#f2f2f2',
-        pointBackgroundColor: '#f3f3f3',
-        pointHoverBorderColor: '#f2f2f2',
-        pointHoverBackgroundColor: '#f2f2f2'
+        pointBackgroundColor: '#093d3d',
+        pointHoverBorderColor: '#093d3d',
+        pointHoverBackgroundColor: '#093d3d'
       }
     ],
     labels: []
@@ -51,16 +52,19 @@ export class CoinDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(res => {
       this.coinId = res['id'];
-    })
+    });
     this.currencyService.getCurrencyById(this.coinId)
     .subscribe(res => {
       this.coinData = res;
-    })
-    this.getGraphicalChart();
+    });
+    this.currencyService.currency.subscribe(res => {
+      this.currency = res;
+      this.getGraphicalChart();
+    });
   }
 
   getGraphicalChart() {
-    this.currencyService.getGraphicalCurrency(this.coinId,"USD", this.days)
+    this.currencyService.getGraphicalCurrency(this.coinId, this.currency, this.days)
     .subscribe((res: any) => {
       setTimeout(() => {
           this.myLineChart.chart?.update();

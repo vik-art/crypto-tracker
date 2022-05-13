@@ -1,8 +1,15 @@
 .row {
+    border-top: 1px solid rgba(255, 255, 255, 0.178);
+    padding: 50px 30px;
     background-color: #212121;
     color: #fff;
     height: 90vh;
 }
-.details {
-    border-right: 1px solid #fff;
+.img {
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.178);
+    .details-title {
+        color: #45dfdf;
+        font-weight: 700;
+    }
 }

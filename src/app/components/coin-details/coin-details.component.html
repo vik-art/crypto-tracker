@@ -3,11 +3,11 @@
         <div class="col-md-4 details">
             <div class="img">
                 <img [src]="coinData?.image?.large" alt="">
-                <h2 class="text-center">{{coinData?.name}}</h2>
-                <p innerHtml="{{coinData?.description.en.split('. ')[0]}}"></p>
-                <p class="title">Rank: {{coinData?.market_cap_rank}}</p>
-                <p class="title">Current Price: {{coinData?.market_data.current_price.usd | currency}}</p>
-                <p class="title">Market Cap: {{coinData?.market_data.market_cap.usd | currency}}</p>
+                <h2 class="details-title text-center">{{coinData?.name}}</h2>
+                <p class="description" innerHtml="{{coinData?.description.en.split('. ')[0]}}"></p>
+                <p class="title"><b>Rank:</b> {{coinData?.market_cap_rank}}</p>
+                <p class="title"><b>Current Price:</b> {{coinData?.market_data.current_price.usd | currency}}</p>
+                <p class="title"><b>Market Cap:</b> {{coinData?.market_data.market_cap.usd | currency}}</p>
             </div>
         </div>
         <div class="col-md-8">
