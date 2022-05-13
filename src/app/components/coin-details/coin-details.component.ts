@@ -62,6 +62,9 @@ export class CoinDetailsComponent implements OnInit {
   getGraphicalChart() {
     this.currencyService.getGraphicalCurrency(this.coinId,"USD", this.days)
     .subscribe((res: any) => {
+      setTimeout(() => {
+          this.myLineChart.chart?.update();
+      }, 200)
       this.lineChartData.datasets[0].data = res.prices.map((a: any) => {
        return a[1];
       });
