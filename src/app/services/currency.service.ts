@@ -29,7 +29,7 @@ export class CurrencyService {
     return this.http.get(`${environment.currencyUrl}/${id}`)
   }
 
-  getGraphicalCurrency(id: string, currency: string, days: string) {
+  getGraphicalCurrency(id: string, currency: string, days: number) {
     const params = new HttpParams()
     .set("vs_currency", currency)
     .set("days", days)
