@@ -6,8 +6,8 @@
                 <h2 class="details-title text-center">{{coinData?.name}}</h2>
                 <p class="description" innerHtml="{{coinData?.description.en.split('. ')[0]}}"></p>
                 <p class="title"><b>Rank:</b> {{coinData?.market_cap_rank}}</p>
-                <p class="title"><b>Current Price:</b> {{coinData?.market_data.current_price.usd | currency}}</p>
-                <p class="title"><b>Market Cap:</b> {{coinData?.market_data.market_cap.usd | currency}}</p>
+                <p class="title"><b>Current Price:</b> {{price | currency: currency}}</p>
+                <p class="title"><b>Market Cap:</b> {{ cap | currency: currency}}</p>
             </div>
         </div>
         <div class="col-md-8">

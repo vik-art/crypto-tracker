@@ -14,6 +14,10 @@ export class CoinDetailsComponent implements OnInit {
   coinData!: any;
   days: number = 30;
   currency!: string;
+  prices!: any;
+  price!: string;
+  caps!: any;
+  cap!: string;
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
@@ -56,10 +60,22 @@ export class CoinDetailsComponent implements OnInit {
     this.currencyService.getCurrencyById(this.coinId)
     .subscribe(res => {
       this.coinData = res;
-    });
-    this.currencyService.currency.subscribe(res => {
-      this.currency = res;
-      this.getGraphicalChart();
+      this.currencyService.currency.subscribe(res => {
+        this.currency = res;
+        this.prices = this.coinData.market_data.current_price;
+        this.caps = this.coinData.market_data.market_cap;
+        for(let price in this.prices) {
+          if(price === this.currency.toLowerCase()) {
+            this.price = this.prices[price];
+          }
+        }
+        for(let cap in this.caps) {
+          if(cap === this.currency.toLowerCase()) {
+            this.cap = this.caps[cap]
+          }
+        }
+        this.getGraphicalChart();
+      });
     });
   }
 
